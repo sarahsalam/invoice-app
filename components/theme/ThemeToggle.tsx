@@ -1,7 +1,7 @@
 "use client"
 
 import {useTheme} from "next-themes";
-import {Button} from "@/components/ui/button";
+import Button from "@/components/common/Button";
 import {Sun, Moon} from "lucide-react";
 
 export const ThemeToggle = () => {
@@ -11,12 +11,12 @@ export const ThemeToggle = () => {
     return (
         <Button
             size="icon"
-            onClick={() => {
+            buttonHandler={() => {
                 setTheme(isDark ? "light" : "dark");
             }
             }
+            icon={isDark ? <Sun/> : <Moon/>}
         >
-            {isDark ? <Sun/> : <Moon/>}
         </Button>
     );
 };

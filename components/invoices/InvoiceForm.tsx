@@ -6,7 +6,7 @@ import { addDays, differenceInCalendarDays } from "date-fns";
 import { Trash2 } from "lucide-react";
 import { invoiceFormSchema, type InvoiceFormValues } from "@/lib/schemas/invoice";
 import DatePickerField from "@/components/invoices/DatePickerField";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/common/Button";
 import { cn } from "@/lib/utils";
 
 interface InvoiceFormProps {
@@ -38,7 +38,6 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
             validationSchema={toFormikValidationSchema(invoiceFormSchema)}
             validateOnBlur
             onSubmit={(values) => {
-                // this only runs for "Save & Send" — draft has its own button below
                 onSubmit(values, "pending");
             }}
         >
@@ -197,11 +196,10 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                         <div className="text-left md:col-span-1 md:text-center">
                                             <Button
                                                 type="button"
-                                                variant="ghost"
                                                 size="icon"
                                                 onClick={() => remove(index)}
                                                 aria-label={`Delete item ${index + 1}`}
-                                                className="text-slate-400 hover:text-red-500"
+                                                classes="text-slate-400 hover:text-red-500"
                                             >
                                                 <Trash2 className="size-4" />
                                             </Button>
@@ -212,8 +210,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                 <Button
                                     type="button"
                                     onClick={() => push(emptyItem)}
-                                    variant="secondary"
-                                    className="mt-2 w-full rounded-full bg-[#f8f8fb] py-3 text-sm font-semibold text-[#7c5dfa] hover:bg-[#f0effb]"
+                                    classes="mt-2 w-full bg-[#f8f8fb] py-3 text-sm font-semibold text-[#7c5dfa] hover:bg-[#f0effb]"
                                 >
                                     + Add New Item
                                 </Button>
@@ -224,9 +221,8 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                     <div className="mt-10 flex flex-wrap items-center justify-between gap-3">
                         <Button
                             type="button"
-                            variant="ghost"
                             onClick={onCancel}
-                            className="rounded-full px-4 py-2 text-slate-500 hover:bg-slate-100"
+                            classes="px-4 py-2 text-slate-500 hover:bg-slate-100"
                         >
                             Discard
                         </Button>
@@ -234,14 +230,16 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Button
                                 type="button"
                                 onClick={() => onSubmit(values, "draft")}
-                                className="rounded-full bg-slate-700 px-5 py-2 text-white hover:bg-slate-800"
+                                bgColor="bg-slate-700"
+                                classes="px-5 py-2 text-white hover:bg-slate-800"
                             >
                                 Save as Draft
                             </Button>
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="rounded-full bg-[#7c5dfa] px-5 py-2 text-white hover:bg-[#6c4ee8]"
+                                bgColor="bg-[#7c5dfa]"
+                                classes="px-5 py-2 text-white hover:bg-[#6c4ee8]"
                             >
                                 Save & Send
                             </Button>

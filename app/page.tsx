@@ -5,6 +5,7 @@ import { useInvoices } from "@/hooks/useInvoices";
 import { InvoiceCard } from "@/components/invoices/InvoiceCard";
 import StatusFilter from "@/components/invoices/StatusFilter";
 import InvoiceForm from "@/components/invoices/InvoiceForm";
+import Button from "@/components/common/Button";
 import { useCreateInvoice } from "@/hooks/useCreateInvoice";
 import { buildInvoicePayload } from "@/lib/utils";
 import type { InvoiceFormValues } from "@/lib/schemas/invoice";
@@ -40,14 +41,14 @@ export default function Home() {
 
     return (
         <>
-            <main className="box-border flex min-h-screen justify-center bg-[#f8f8fb] px-4 pt-16 text-lg dark:bg-background sm:px-8 sm:pt-16 md:-translate-x-[51.5px]">
-                <div className="w-full max-w-[730px]">
+            <main className="box-border flex min-h-screen justify-center bg-[#f8f8fb] px-10 pt-0 text-lg dark:bg-background sm:px-8 sm:pt-24 md:-translate-x-[24px]">
+                <div className="h-[1181px] w-[778px] max-w-[778px]">
 
-                <div className="flex items-start justify-between gap-4">
+                <div className="h-[90px] w-[730px] flex items-start justify-between gap-4">
 
                     <div>
                         <h1 className="text-[32px] font-bold leading-tight">Invoices</h1>
-                        <p className="mt-1 text-sm text-[#888EB0]">
+                        <p className="mt-1 text-xs text-[#888EB0]">
                             {invoices?.length ?? 0} invoices
                         </p>
                     </div>
@@ -56,23 +57,23 @@ export default function Home() {
                         <StatusFilter selected={selectedStatuses} onChange={setSelectedStatuses} />
 
 
-                        <button
+                        <Button
                             type="button"
-                            onClick={() => setIsCreating(true)}
-                            className="flex h-11 w-11 items-center justify-center rounded-[24px] bg-[#7C5DFA] text-xl font-bold text-white md:h-auto md:w-auto md:gap-2 md:px-5 md:py-3 md:text-lg"
+                            buttonHandler={() => setIsCreating(true)}
+                            bgColor="bg-[#9277FF]"
+                            classes="relative h-11 w-[150px] items-center justify-center text-xs font-bold text-white"
+                            icon={
+                                <Plus className="absolute left-2 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-white p-2 text-[#9277FF] stroke-4" />
+                            }
+                            text={<span className="translate-x-5">New Invoice</span>}
                             aria-label="New Invoice"
-                        >
-                            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[#7C5DFA]">
-                                <Plus className="h-4 w-4 stroke-[3]" />
-                            </span>
-                            <span className="hidden md:inline">New Invoice</span>
-                        </button>
+                        />
 
                     </div>
 
                 </div>
                 {!invoices?.length && <p className="mt-8 text-xl">No invoices yet.</p>}
-                <div className="mt-16 space-y-4">
+                <div className="mt-12 h-22.5 w-182.5 space-y-4">
                     {filteredInvoices.map((invoice: Invoice) => (
                         <InvoiceCard
                             key={invoice._id}

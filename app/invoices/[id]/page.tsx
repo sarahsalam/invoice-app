@@ -37,7 +37,7 @@ export default function InvoiceDetail() {
                 ← Go back
             </button>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-white p-3 shadow-sm dark:bg-gray-800 sm:p-4 mb-4" >
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-white p-3 shadow-sm dark:bg-card sm:p-4 mb-4" >
                 <div className="flex items-center gap-3">
                     <span className="text-gray-500 dark:text-gray-400">Status</span>
                     <span className={`flex h-11 w-28 items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-bold ${badge.bg} ${badge.text}`}>
@@ -48,7 +48,7 @@ export default function InvoiceDetail() {
                 <div className="flex flex-wrap justify-end gap-2">
                     <button
                         onClick={() => router.push(`/invoices/${id}/edit`)}
-                        className="rounded-full bg-gray-100 px-3 py-2 text-sm font-semibold dark:bg-gray-600 sm:px-4"
+                        className="rounded-full bg-gray-100 px-3 py-2 text-sm font-semibold dark:bg-gray-card sm:px-4"
                     >
                         Edit
                     </button>
@@ -70,7 +70,7 @@ export default function InvoiceDetail() {
                 </div>
             </div>
 
-            <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-gray-800 sm:p-6">
+            <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-card sm:p-6">
                 <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
                         <p className="font-semibold">
@@ -109,7 +109,7 @@ export default function InvoiceDetail() {
                     <p className="font-semibold">{invoice.clientEmail}</p>
                 </div>
 
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-t-lg p-6">
+                <div className="bg-gray-50 dark:bg-[#252945] rounded-t-lg p-6">
                     <div className="overflow-x-auto">
                     <table className="w-full min-w-[480px]">
                         <thead>

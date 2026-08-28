@@ -36,7 +36,7 @@ export default function StatusFilter({ selected, onChange }: StatusFilterProps) 
             <button
                 type="button"
                 onClick={() => setIsOpen((open) => !open)}
-                className="flex items-center gap-1 text-right text-sm font-semibold sm:gap-2 sm:text-base"
+                className="flex items-center gap-1 text-right text-xs font-bold sm:gap-2"
                 aria-expanded={isOpen}
             >
                 Filter by status
@@ -44,7 +44,7 @@ export default function StatusFilter({ selected, onChange }: StatusFilterProps) 
             </button>
 
             {isOpen && (
-                <div className="absolute left-0 z-10 mt-3 w-40 max-w-[calc(100vw-2rem)] rounded-lg bg-popover p-4 text-popover-foreground shadow-lg sm:right-0 sm:left-auto">
+                <div className="absolute left-0 z-10 mt-3 w-40 max-w-[calc(100vw-2rem)] rounded-lg bg-popover p-4 text-popover-foreground shadow-lg sm:right-0 sm:left-auto dark:bg-card">
                     {STATUS_OPTIONS.map((status) => (
                         <label key={status} className="flex cursor-pointer items-center gap-2 py-1.5 text-sm">
                             <input
