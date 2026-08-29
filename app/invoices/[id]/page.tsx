@@ -6,6 +6,9 @@ import { useUpdateInvoice } from "@/hooks/useUpdateInvoice";
 import { useDeleteInvoice } from "@/hooks/useDeleteInvoice";
 import type { Invoice } from "@/lib/schemas/invoice";
 import { statusStyles } from "@/components/invoices/InvoiceCard";
+import { useState } from "react";
+import ConfirmDialog from "@/components/ui/ConfirmDialog";
+
 
 export default function InvoiceDetail() {
     const { id } = useParams<{ id: string }>();
@@ -13,6 +16,7 @@ export default function InvoiceDetail() {
     const { data: invoice, isLoading, isError } = useInvoice(id);
     const updateInvoice = useUpdateInvoice();
     const deleteInvoice = useDeleteInvoice();
+    const [isDeleting, setIsDeleting] = useState(false);
 
     if (isLoading) return <p className="p-6">Loading...</p>;
     if (isError || !invoice) return <p className="p-6">Invoice not found.</p>;
@@ -24,14 +28,23 @@ export default function InvoiceDetail() {
     }
 
     function handleDelete() {
-        if (confirm("Delete this invoice? This cannot be undone.")) {
+        
             deleteInvoice.mutate(id, {
                 onSuccess: () => router.push("/"),
             });
-        }
+        
     }
 
     return (
+        <>
+        <ConfirmDialog
+        open={isDeleting}
+        title="Delete Invoice"
+        message={"Are you sure you want to delete invoice #" + invoice._id + "? This action cannot be undone."}
+        onConfirm={handleDelete}
+        onCancel={() => setIsDeleting(false)}
+      />
+
         <div className="mx-auto max-w-3xl p-4 sm:p-6">
             <button onClick={() => router.push("/")} className="mb-5 font-semibold sm:mb-6">
                 ← Go back
@@ -54,7 +67,7 @@ export default function InvoiceDetail() {
                     </button>
 
                     <button
-                        onClick={handleDelete}
+                        onClick={() => setIsDeleting(true)}
                         className="rounded-full bg-red-600 px-3 py-2 text-sm font-semibold text-white sm:px-4"
                     >
                         Delete
@@ -140,5 +153,6 @@ export default function InvoiceDetail() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

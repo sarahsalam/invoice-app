@@ -3,7 +3,7 @@
 import { useField, useFormikContext } from "formik";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
-import Button from "@/components/common/Button";
+import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
     Popover,
@@ -29,11 +29,13 @@ export default function DatePickerField({
                 render={
                     <Button
                         type="button"
-                        classes="w-full justify-start border border-input bg-background text-left font-normal"
+                        variant="outline"
+                        className="w-full flex flex-0.75 flex-row-reverse justify-between text-left font-bold text-xs bg-white text-foreground dark:bg-card dark:text-card-foreground rounded-sm border h-10 border-[#dfe3fa] px-4 py-3 transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                         onBlur={() => setFieldTouched(name, true)}
-                        icon={<CalendarIcon className="mr-2 h-4 w-4" />}
-                        text={selectedDate ? format(selectedDate, "dd MMM yyyy") : "Pick a date"}
-                    />
+                    >
+                        <CalendarIcon className="flex-0.25 h-4 w-4" />
+                        {selectedDate ? format(selectedDate, "dd MMM yyyy") : "Pick a date"}
+                    </Button>
                 }
             />
             <PopoverContent className="w-auto p-0">

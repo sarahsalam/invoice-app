@@ -2,7 +2,7 @@
 
 import {useTheme} from "next-themes";
 import Button from "@/components/common/Button";
-import {Sun, Moon} from "lucide-react";
+import {Sun, Moon } from "lucide-react";
 
 export const ThemeToggle = () => {
     const {resolvedTheme, setTheme} = useTheme();
@@ -11,11 +11,12 @@ export const ThemeToggle = () => {
     return (
         <Button
             size="icon"
+            className="bg-transparent"
             buttonHandler={() => {
                 setTheme(isDark ? "light" : "dark");
             }
             }
-            icon={isDark ? <Sun/> : <Moon/>}
+            icon={isDark ? <Sun className="bg-transparent" fill="white"/> : <Moon  className="bg-transparent" color="transparent" fill="white" strokeWidth={0}  />}
         >
         </Button>
     );

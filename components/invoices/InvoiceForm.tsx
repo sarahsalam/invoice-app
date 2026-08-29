@@ -42,14 +42,14 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
             }}
         >
             {({ values, isSubmitting, setFieldValue }) => (
-                <Form className={cn("w-full rounded-xl bg-card p-4 text-card-foreground shadow-sm md:mx-auto md:max-w-2xl md:p-8", className)}>
+                <Form className={cn("w-full h-full  bg-card p-0 text-card-foreground md:mx-auto md:max-w-2xl md:p-8", className)}>
                     <h2 className="mb-8 text-xl font-bold sm:text-2xl">New Invoice</h2>
 
-                    <p className="mb-3 font-semibold text-[#7c5dfa]">Bill From</p>
+                    <p className="mb-3 font-bold  text-xs text-[#7c5dfa]">Bill From</p>
                     <Field
                         name="senderAddress.street"
                         placeholder="Street Address"
-                        className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                        className="w-full  border border-[#dfe3fa] rounded-sm  px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                     />
                     <ErrorMessage name="senderAddress.street" component="p" className={fieldErrorClass} />
 
@@ -58,7 +58,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 name="senderAddress.city"
                                 placeholder="City"
-                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <ErrorMessage name="senderAddress.city" component="p" className={fieldErrorClass} />
                         </div>
@@ -66,7 +66,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 name="senderAddress.postCode"
                                 placeholder="Post Code"
-                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <ErrorMessage name="senderAddress.postCode" component="p" className={fieldErrorClass} />
                         </div>
@@ -74,31 +74,31 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 name="senderAddress.country"
                                 placeholder="Country"
-                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <ErrorMessage name="senderAddress.country" component="p" className={fieldErrorClass} />
                         </div>
                     </div>
 
-                    <p className="mb-3 mt-8 font-semibold text-[#7c5dfa]">Bill To</p>
+                    <p className="mb-3 mt-8 font-bold  text-xs text-[#7c5dfa]">Bill To</p>
                     <Field
                         name="clientName"
                         placeholder="Client's Name"
-                        className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                        className="w-full  border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                     />
                     <ErrorMessage name="clientName" component="p" className={fieldErrorClass} />
 
                     <Field
                         name="clientEmail"
                         placeholder="Client's Email"
-                        className="mt-3 w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                        className="mt-3 w-full border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                     />
                     <ErrorMessage name="clientEmail" component="p" className={fieldErrorClass} />
 
                     <Field
                         name="clientAddress.street"
                         placeholder="Street Address"
-                        className="mt-3 w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                        className="mt-3 w-full  border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                     />
                     <ErrorMessage name="clientAddress.street" component="p" className={fieldErrorClass} />
 
@@ -107,7 +107,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 name="clientAddress.city"
                                 placeholder="City"
-                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full  border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <ErrorMessage name="clientAddress.city" component="p" className={fieldErrorClass} />
                         </div>
@@ -115,7 +115,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 name="clientAddress.postCode"
                                 placeholder="Post Code"
-                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <ErrorMessage name="clientAddress.postCode" component="p" className={fieldErrorClass} />
                         </div>
@@ -123,7 +123,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 name="clientAddress.country"
                                 placeholder="Country"
-                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full border border-[#dfe3fa] rounded-sm   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <ErrorMessage name="clientAddress.country" component="p" className={fieldErrorClass} />
                         </div>
@@ -131,12 +131,12 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
 
                     <div className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2">
                         <div>
-                            <label className="mb-2 block text-sm text-slate-500">Invoice Date</label>
+                            <label className="mb-2 block  text-xs text-slate-500">Invoice Date</label>
                             <DatePickerField name="createdAt" />
                             <ErrorMessage name="createdAt" component="p" className={fieldErrorClass} />
                         </div>
                         <div>
-                            <label className="mb-2 block text-sm text-slate-500">Payment Terms</label>
+                            <label className="mb-2 block  text-xs text-slate-500">Payment Terms</label>
                             <ErrorMessage name="paymentDue" component="p" className={fieldErrorClass} />
                             <DatePickerField
                                 name="paymentDue"
@@ -155,11 +155,11 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                     <Field
                         name="description"
                         placeholder="Project Description"
-                        className="mt-3 w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                        className="mt-3 w-full rounded-sm border border-[#dfe3fa]   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                     />
                     <ErrorMessage name="description" component="p" className={fieldErrorClass} />
 
-                    <p className="mb-3 mt-8 text-lg font-semibold text-slate-600">Item List</p>
+                    <p className="mb-3 mt-8 text-md font-bold text-slate-600">Item List</p>
 
                     <FieldArray name="items">
                         {({ push, remove }) => (
@@ -170,7 +170,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                             <Field
                                                 name={`items.${index}.name`}
                                                 placeholder="Item Name"
-                                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                                className="w-full rounded-sm border border-[#dfe3fa]   px-4 py-3  text-xs text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                                             />
                                             <ErrorMessage name={`items.${index}.name`} component="p" className={fieldErrorClass} />
                                         </div>
@@ -178,7 +178,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                             <Field
                                                 name={`items.${index}.quantity`}
                                                 type="number"
-                                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                                className="w-full rounded-sm border border-[#dfe3fa]   px-4 py-3  text-xs text-foreground outline-none transition focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                                             />
                                             <ErrorMessage name={`items.${index}.quantity`} component="p" className={fieldErrorClass} />
                                         </div>
@@ -186,20 +186,20 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                             <Field
                                                 name={`items.${index}.price`}
                                                 type="number"
-                                                className="w-full rounded-md border border-[#dfe3fa] bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                                className="w-full rounded-sm border border-[#dfe3fa]   px-4 py-3  text-xs text-foreground outline-none transition focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                                             />
                                             <ErrorMessage name={`items.${index}.price`} component="p" className={fieldErrorClass} />
                                         </div>
-                                        <div className="text-left text-sm font-medium text-slate-600 md:col-span-2 md:text-right">
+                                        <div className="text-left  text-xs font-medium text-slate-600 md:col-span-2 md:text-right">
                                             ${((values.items[index]?.quantity || 0) * (values.items[index]?.price || 0)).toFixed(2)}
                                         </div>
                                         <div className="text-left md:col-span-1 md:text-center">
                                             <Button
-                                                type="button"
+                                               bgColor="bg-transparent"
                                                 size="icon"
                                                 onClick={() => remove(index)}
                                                 aria-label={`Delete item ${index + 1}`}
-                                                classes="text-slate-400 hover:text-red-500"
+                                                className="text-slate-400 hover:text-red-500"
                                             >
                                                 <Trash2 className="size-4" />
                                             </Button>
@@ -210,13 +210,17 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                 <Button
                                     type="button"
                                     onClick={() => push(emptyItem)}
-                                    classes="mt-2 w-full bg-[#f8f8fb] py-3 text-sm font-semibold text-[#7c5dfa] hover:bg-[#f0effb]"
+                                    bgColor="bg-transparent"
+                                    size="icon-sm"
+                                    className="mt-2 w-full rounded-full bg-[#f8f8fb] py-3  text-xs font-bold  text-xs text-[#7c5dfa] hover:bg-[#f0effb]"
                                 >
                                     + Add New Item
                                 </Button>
                             </div>
                         )}
                     </FieldArray>
+
+              
 
                     <div className="mt-10 flex flex-wrap items-center justify-between gap-3">
                         <Button
