@@ -64,7 +64,7 @@ export default function Home() {
                                 type="button"
                                 buttonHandler={() => setIsCreating(true)}
                                 bgColor=" bg-[#7c5dfa]"
-                                classes="relative h-11 w-[150px] items-center justify-center text-xs font-bold text-white"
+                                classes="relative h-11 w-[150px] items-center justify-center text-xs font-bold text-white hover:bg-[#A68CFF]"
                                 icon={
                                     <Plus className="absolute left-2 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-white p-2 text-[#7c5dfa] stroke-4" />
                                 }

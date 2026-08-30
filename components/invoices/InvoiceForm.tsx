@@ -246,7 +246,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                                 name={`items.${index}.price`}
                                                 type="number"
                                                 placeholder="0"
-                                                className="w-full max-w-[100px] h-[48px] rounded-sm border font-bold border-[#dfe3fa] px-4 py-3 text-xs text-foreground outline-none transition placeholder:text-black focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                                className="w-full max-w-[100px] h-[48px] rounded-sm border font-bold border-[#dfe3fa] px-4 py-3 text-xs text-foreground outline-none transition placeholder:text-black [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                                             />
                                         </div>
                                         <div className="self-start pl-2 text-left md:col-span-2">
