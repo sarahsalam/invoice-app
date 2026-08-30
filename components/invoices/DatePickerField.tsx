@@ -30,18 +30,19 @@ export default function DatePickerField({
                     <Button
                         type="button"
                         variant="outline"
-                        className="w-full flex flex-0.75 flex-row-reverse justify-between text-left font-bold text-xs bg-white text-foreground dark:bg-[#252945] dark:text-white rounded-sm border h-10 border-[#dfe3fa] dark:border-[#252945] px-4 py-3 transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                        className="w-full flex flex-0.75 flex-row-reverse justify-between text-left font-bold text-xs bg-white dark:bg-[#252945] dark:text-[#7c5dfa] rounded-sm border h-10 border-[#dfe3fa] dark:border-[#252945] px-4 py-3 transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]"
                         onBlur={() => setFieldTouched(name, true)}
                     >
-                        <CalendarIcon className="flex-0.25 h-4 w-4" />
+                        <CalendarIcon className="flex-0.25 h-4 w-4 text-[#888eb0]" />
                         {selectedDate ? format(selectedDate, "dd MMM yyyy") : "Pick a date"}
                     </Button>
                 }
             />
-            <PopoverContent className="w-auto p-0">
+            <PopoverContent className="mt-6 h-[271px] w-[216px] p-0">
                 <Calendar
                     mode="single"
                     selected={selectedDate}
+                    className="h-full w-full p-3 text-xs font-bold [&_button]:text-xs [&_button]:font-bold"
                     onSelect={(date) => {
                         if (date) {
                             setFieldValue(name, format(date, "yyyy-MM-dd"));

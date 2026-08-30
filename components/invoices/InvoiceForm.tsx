@@ -31,7 +31,7 @@ function FieldError({ name }: { name: string }) {
         ? "required"
         : String(error);
 
-    return <span className="field-error absolute right-0 top-0 text-[10px] text-red-500">{message}</span>;
+    return <span className="field-error absolute right-0 top-0 z-10 max-w-full truncate text-[10px] text-red-500">{message}</span>;
 }
 
 function QuantityError({ name }: { name: string }) {
@@ -85,13 +85,13 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                         <FieldError name="senderAddress.street" />
                     </div>
 
-                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
+                    <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-3">
                         <div className={fieldClass}>
                             <label htmlFor="senderAddress.city" className={fieldLabelClass}>City</label>
                             <Field
                                 id="senderAddress.city"
                                 name="senderAddress.city"
-                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-4 py-3 text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-5 py-[15px] text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <FieldError name="senderAddress.city" />
                         </div>
@@ -100,7 +100,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 id="senderAddress.postCode"
                                 name="senderAddress.postCode"
-                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-4 py-3 text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-5 py-[15px] text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <FieldError name="senderAddress.postCode" />
                         </div>
@@ -109,7 +109,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 id="senderAddress.country"
                                 name="senderAddress.country"
-                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-4 py-3 text-xs font-bold text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-5 py-[15px] text-xs font-bold text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <FieldError name="senderAddress.country" />
                         </div>
@@ -148,13 +148,13 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                         <FieldError name="clientAddress.street" />
                     </div>
 
-                    <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
+                    <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-3">
                         <div className={fieldClass}>
                             <label htmlFor="clientAddress.city" className={fieldLabelClass}>City</label>
                             <Field
                                 id="clientAddress.city"
                                 name="clientAddress.city"
-                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-4 py-3 text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-5 py-[15px] text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <FieldError name="clientAddress.city" />
                         </div>
@@ -163,7 +163,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 id="clientAddress.postCode"
                                 name="clientAddress.postCode"
-                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-4 py-3 text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-5 py-[15px] text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <FieldError name="clientAddress.postCode" />
                         </div>
@@ -172,7 +172,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                             <Field
                                 id="clientAddress.country"
                                 name="clientAddress.country"
-                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-4 py-3 text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                className="w-full max-w-[139px] h-[48px] border border-[#dfe3fa] rounded-sm px-5 py-[15px] text-xs text-foreground font-bold outline-none transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                             />
                             <FieldError name="clientAddress.country" />
                         </div>
@@ -180,12 +180,12 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
 
                     <div className="mt-8 grid grid-cols-1 gap-3 md:grid-cols-2">
                         <div className={fieldClass}>
-                            <label className=" w-full max-w-[232px] h-[48px] mb-2 block  text-xs text-slate-500">Invoice Date</label>
+                            <label className={fieldLabelClass}>Invoice Date</label>
                             <DatePickerField name="createdAt" />
                             <FieldError name="createdAt" />
                         </div>
                         <div className={fieldClass}>
-                            <label className=" w-full max-w-[232px] h-[48px] mb-2 block  text-xs text-slate-500">Payment Terms</label>
+                            <label className={fieldLabelClass}>Payment Terms</label>
                             <FieldError name="paymentDue" />
                             <DatePickerField
                                 name="paymentDue"
@@ -235,7 +235,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                                 name={`items.${index}.quantity`}
                                                 type="number"
                                                 placeholder="0"
-                                                className="w-full max-w-[60px] h-[48px] rounded-sm border font-bold border-[#dfe3fa] px-4 py-3 text-xs text-foreground outline-none transition placeholder:text-black focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                                                className="w-full max-w-[70px] h-[48px] rounded-sm border font-bold border-[#dfe3fa] px-4 py-3 text-xs text-foreground outline-none transition placeholder:text-black [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                                             />
                                             <QuantityError name={`items.${index}.quantity`} />
                                         </div>
@@ -305,7 +305,7 @@ export default function InvoiceForm({ onSubmit, onCancel, initialValues, classNa
                                     onSubmit(values, "draft");
                                 }}
                                 bgColor="bg-slate-700"
-                                classes="px-5 py-2 text-white hover:bg-slate-800 font-bold dark:bg-[#1E2139]"
+                                classes="px-5 py-2 text-slate-400 hover:bg-slate-800 font-bold dark:bg-[#1E2139]"
                             >
                                 Save as Draft
                             </Button>
