@@ -36,20 +36,23 @@ export default function Home() {
     const filteredInvoices = selectedStatuses.includes("all")
         ? invoices || []
         : (invoices || []).filter((invoice: Invoice) => selectedStatuses.includes(invoice.status));
+    const invoiceCount = filteredInvoices.length;
 
 
 
     return (
         <>
             <main className="box-border flex min-h-screen justify-center bg-[#f8f8fb] px-10 pt-0 text-lg dark:bg-background sm:px-8 sm:pt-24 md:-translate-x-[24px]">
-                <div className="h-[1181px] w-[778px] max-w-[778px]">
+                <div className="w-full max-w-[778px]">
 
-                    <div className="h-[90px] w-[730px] flex items-start justify-between gap-4">
+                    <div className="flex h-[90px] w-full max-w-[730px] items-start justify-between gap-4">
 
                         <div>
                             <h1 className="text-[32px] font-bold leading-tight">Invoices</h1>
-                            <p className="mt-1 text-xs text-[#888EB0]">
-                                {invoices?.length ?? 0} invoices
+                            <p className="mt-1 text-xs text-[#888EB0] dark:text-white">
+                                {invoiceCount === 0
+                                    ? "No invoices"
+                                    : `${invoiceCount} invoice${invoiceCount === 1 ? "" : "s"}`}
                             </p>
                         </div>
 
@@ -60,10 +63,10 @@ export default function Home() {
                             <Button
                                 type="button"
                                 buttonHandler={() => setIsCreating(true)}
-                                bgColor="bg-[#9277FF]"
+                                bgColor=" bg-[#7c5dfa]"
                                 classes="relative h-11 w-[150px] items-center justify-center text-xs font-bold text-white"
                                 icon={
-                                    <Plus className="absolute left-2 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-white p-2 text-[#9277FF] stroke-4" />
+                                    <Plus className="absolute left-2 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-white p-2 text-[#7c5dfa] stroke-4" />
                                 }
                                 text={<span className="translate-x-5">New Invoice</span>}
                                 aria-label="New Invoice"
@@ -72,29 +75,36 @@ export default function Home() {
                         </div>
 
                     </div>
-                    {!invoices?.length && <p className="mt-8 text-xl">No invoices yet.</p>}
-                    <div className="mt-12 h-22.5 w-182.5 space-y-4">
-                        {filteredInvoices.map((invoice: Invoice) => (
-                            <InvoiceCard
-                                key={invoice._id}
-                                id={String(invoice._id)}
-                                dueDate={invoice.paymentDue}
-                                client={invoice.clientName}
-                                amount={invoice.total}
-                                status={invoice.status}
-                            />
-                        ))}
-                        {!!invoices?.length && !filteredInvoices.length && <p className="text-xl">No invoices found for this filter.</p>}
+                    <div className="mt-12 w-full max-w-[730px] space-y-4">
+                        {filteredInvoices.length ? (
+                            filteredInvoices.map((invoice: Invoice) => (
+                                <InvoiceCard
+                                    key={invoice._id}
+                                    id={String(invoice._id)}
+                                    dueDate={invoice.paymentDue}
+                                    client={invoice.clientName}
+                                    amount={invoice.total}
+                                    status={invoice.status}
+                                />
+                            ))
+                        ) : (
+                            <div className="flex flex-col items-center pt-48 text-center">
+                                <h2 className="text-xl font-bold text-slate-900 dark:text-white">There is nothing here</h2>
+                                <p className="mt-4 max-w-[260px] text-xs leading-5 text-[#888EB0]">
+                                    Create an invoice by clicking the New Invoice button and get started
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </main>
             {isCreating && (
                 <div className="fixed inset-x-0 bottom-0 top-20 z-10 bg-black/40 md:left-[103px] md:top-0">
-                    <div className="h-full w-full max-w-2xl overflow-y-auto bg-background shadow-2xl animate-[invoice-drawer-in_250ms_ease-out]">
+                    <div className="h-full w-full max-w-[615px] overflow-y-auto bg-background shadow-2xl dark:bg-[#1E2139] animate-[invoice-drawer-in_250ms_ease-out]">
                         <InvoiceForm
                             onSubmit={handleCreate}
                             onCancel={() => setIsCreating(false)}
-                            className="md:mx-0"
+                            className="md:mx-0 "
                         />
                     </div>
                 </div>

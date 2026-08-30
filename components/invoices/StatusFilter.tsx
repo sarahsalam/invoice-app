@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const STATUS_OPTIONS = ["all", "draft", "pending", "paid"];
+const STATUS_OPTIONS = ["all", "pending", "draft", "paid"];
 
 interface StatusFilterProps {
     selected: string[];
@@ -40,20 +40,42 @@ export default function StatusFilter({ selected, onChange }: StatusFilterProps) 
                 aria-expanded={isOpen}
             >
                 Filter by status
-                <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`h-4 w-4 text-[#7c5dfa] font-bold stroke-3 transition-transform ${isOpen ? "rotate-180" : ""}`} />
             </button>
 
             {isOpen && (
-                <div className="absolute left-0 z-10 mt-3 w-40 max-w-[calc(100vw-2rem)] rounded-lg bg-popover p-4 text-popover-foreground shadow-lg sm:right-0 sm:left-auto dark:bg-card">
+                <div
+                    className="
+            absolute
+            left-1/2
+            z-10
+            mt-5
+            w-[192px]
+            -translate-x-1/2
+            rounded-lg
+            bg-white
+            px-6
+            py-5
+            shadow-lg
+            dark:bg-card
+            font-bold
+        "
+                >
                     {STATUS_OPTIONS.map((status) => (
-                        <label key={status} className="flex cursor-pointer items-center gap-2 py-1.5 text-sm">
+                        <label
+                            key={status}
+                            className="flex cursor-pointer items-center gap-3 py-1.5 text-xs font-bold"
+                        >
                             <input
                                 type="checkbox"
                                 checked={selected.includes(status)}
                                 onChange={() => toggle(status)}
-                                className="accent-purple-600"
+                                className="h-4 w-4 border border-[#dfe3fa] bg-[#dfe3fa] accent-[#7c5dfa]"
                             />
-                            <span className="capitalize">{status}</span>
+
+                            <span className="capitalize">
+                    {status}
+                </span>
                         </label>
                     ))}
                 </div>

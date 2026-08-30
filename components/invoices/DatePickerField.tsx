@@ -30,7 +30,7 @@ export default function DatePickerField({
                     <Button
                         type="button"
                         variant="outline"
-                        className="w-full flex flex-0.75 flex-row-reverse justify-between text-left font-bold text-xs bg-white text-foreground dark:bg-card dark:text-card-foreground rounded-sm border h-10 border-[#dfe3fa] px-4 py-3 transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
+                        className="w-full flex flex-0.75 flex-row-reverse justify-between text-left font-bold text-xs bg-white text-foreground dark:bg-[#252945] dark:text-white rounded-sm border h-10 border-[#dfe3fa] dark:border-[#252945] px-4 py-3 transition placeholder:text-muted-foreground focus:border-[#7c5dfa] focus:ring-2 focus:ring-[#7c5dfa]/10"
                         onBlur={() => setFieldTouched(name, true)}
                     >
                         <CalendarIcon className="flex-0.25 h-4 w-4" />

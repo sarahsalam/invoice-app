@@ -11,12 +11,13 @@ export const ThemeToggle = () => {
     return (
         <Button
             size="icon"
-            className="bg-transparent"
+            bgColor="bg-transparent"
+            classes="text-[#858bb3] hover:bg-transparent hover:text-white"
             buttonHandler={() => {
                 setTheme(isDark ? "light" : "dark");
             }
             }
-            icon={isDark ? <Sun className="bg-transparent" fill="white"/> : <Moon  className="bg-transparent" color="transparent" fill="white" strokeWidth={0}  />}
+            icon={isDark ? <Sun /> : <Moon />}
         >
         </Button>
     );

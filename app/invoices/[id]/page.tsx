@@ -8,6 +8,7 @@ import type { Invoice } from "@/lib/schemas/invoice";
 import { statusStyles } from "@/components/invoices/InvoiceCard";
 import { useState } from "react";
 import ConfirmDialog from "@/components/ui/ConfirmDialog";
+import Button from "@/components/common/Button";
 
 
 export default function InvoiceDetail() {
@@ -45,54 +46,60 @@ export default function InvoiceDetail() {
         onCancel={() => setIsDeleting(false)}
       />
 
-        <div className="mx-auto max-w-3xl p-4 sm:p-6">
-            <button onClick={() => router.push("/")} className="mb-5 font-semibold sm:mb-6">
-                ← Go back
+        <div className="mx-auto w-full max-w-[730px] px-4 py-10 sm:py-16">
+            <button onClick={() => router.push("/")} className="mb-8 flex items-center gap-3 text-xs font-bold text-slate-900 dark:text-white">
+                <span className="text-lg text-[#7c5dfa]">‹</span>
+                Go back
             </button>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-white p-3 shadow-sm dark:bg-card sm:p-4 mb-4" >
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-4 rounded-lg bg-white p-6 shadow-sm dark:bg-card" >
                 <div className="flex items-center gap-3">
-                    <span className="text-gray-500 dark:text-gray-400">Status</span>
-                    <span className={`flex h-11 w-28 items-center justify-center gap-2 rounded-md px-4 py-3 text-sm font-bold ${badge.bg} ${badge.text}`}>
+                    <span className="text-xs text-slate-500 dark:text-white">Status</span>
+                    <span className={`flex h-[40px] w-[104px] items-center justify-center gap-2 rounded-md px-2 text-xs font-bold ${badge.bg} ${badge.text}`}>
                         <span className={`h-2 w-2 rounded-full ${badge.dot}`} />
                         {badge.label}
                     </span>
                 </div>
                 <div className="flex flex-wrap justify-end gap-2">
-                    <button
-                        onClick={() => router.push(`/invoices/${id}/edit`)}
-                        className="rounded-full bg-gray-100 px-3 py-2 text-sm font-semibold dark:bg-gray-card sm:px-4"
-                    >
-                        Edit
-                    </button>
+                    {invoice.status !== "paid" && (
+                        <Button
+                            onClick={() => router.push(`/invoices/${id}/edit`)}
+                            bgColor="bg-gray-100 dark:bg-[#252945]"
+                            classes="h-11 px-5 font-bold text-[#888eb0] dark:text-white"
+                        >
+                            Edit
+                        </Button>
+                    )}
 
-                    <button
+                    <Button
                         onClick={() => setIsDeleting(true)}
-                        className="rounded-full bg-red-600 px-3 py-2 text-sm font-semibold text-white sm:px-4"
+                        bgColor="bg-[#ec5757]"
+                        classes="h-11 px-5 font-bold text-white hover:bg-red-600"
                     >
                         Delete
-                    </button>
+                    </Button>
                     {invoice.status !== "paid" && (
-                        <button
+                        <Button
                             onClick={handleMarkAsPaid}
-                            className="rounded-full bg-purple-600 px-3 py-2 text-sm font-semibold text-white sm:px-4"
+                            bgColor="bg-[#7c5dfa]"
+                            classes="h-11 px-5 font-bold text-white hover:bg-[#6c4ee8]"
                         >
                             Mark as Paid
-                        </button>
+                        </Button>
                     )}
                 </div>
             </div>
 
-            <div className="rounded-lg bg-white p-4 shadow-sm dark:bg-card sm:p-6">
-                <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="rounded-lg bg-white p-6 shadow-sm dark:bg-card sm:p-8">
+                <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2">
                     <div>
-                        <p className="font-semibold">
-                            <span className="text-gray-400">#</span>
+                        <p className="text-lg font-bold text-slate-900 dark:text-white">
+                            <span className="text-[#7e88c3] dark:text-white">#</span>
                             {invoice._id}
                         </p>
-                        <p className="text-gray-500 dark:text-gray-400">{invoice.description}</p>
+                        <p className="mt-2 text-xs text-[#7e88c3] dark:text-white">{invoice.description}</p>
                     </div>
-                    <div className="text-left text-gray-500 dark:text-gray-400 md:text-right">
+                    <div className="text-left text-xs leading-5 text-[#7e88c3] dark:text-white md:text-right">
                         <p>{invoice.senderAddress.street}</p>
                         <p>{invoice.senderAddress.city}</p>
                         <p>{invoice.senderAddress.postCode}</p>
@@ -100,46 +107,45 @@ export default function InvoiceDetail() {
                     </div>
                 </div>
 
-                <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-3">
                     <div>
-                        <p className="text-gray-500  mb-2">Invoice Date</p>
-                        <p className="font-semibold mb-4">{invoice.createdAt}</p>
-                        <p className="text-gray-500 mb-2">Payment Due</p>
-                        <p className="font-semibold">{invoice.paymentDue}</p>
+                        <p className="mb-3 text-xs text-[#7e88c3] dark:text-white">Invoice Date</p>
+                        <p className="mb-6 font-bold text-slate-900 dark:text-white">{invoice.createdAt}</p>
+                        <p className="mb-3 text-xs text-[#7e88c3] dark:text-white">Payment Due</p>
+                        <p className="font-bold text-slate-900 dark:text-white">{invoice.paymentDue}</p>
                     </div>
                     <div>
-                        <p className="text-gray-500 dark:text-gray-400 mb-2">Bill To</p>
-                        <p className="font-semibold mb-1">{invoice.clientName}</p>
-                        <p className="text-gray-500 dark:text-gray-400">{invoice.clientAddress.street}</p>
-                        <p className="text-gray-500 dark:text-gray-400">{invoice.clientAddress.city}</p>
-                        <p className="text-gray-500 dark:text-gray-400">{invoice.clientAddress.postCode}</p>
-                        <p className="text-gray-500 dark:text-gray-400">{invoice.clientAddress.country}</p>
+                        <p className="mb-3 text-xs text-[#7e88c3] dark:text-white">Bill To</p>
+                        <p className="mb-2 font-bold text-slate-900 dark:text-white">{invoice.clientName}</p>
+                        <p className="text-xs leading-5 text-[#7e88c3] dark:text-white">{invoice.clientAddress.street}</p>
+                        <p className="text-xs leading-5 text-[#7e88c3] dark:text-white">{invoice.clientAddress.city}</p>
+                        <p className="text-xs leading-5 text-[#7e88c3] dark:text-white">{invoice.clientAddress.postCode}</p>
+                        <p className="text-xs leading-5 text-[#7e88c3] dark:text-white">{invoice.clientAddress.country}</p>
+                    </div>
+                    <div>
+                        <p className="mb-3 text-xs text-[#888eb0] dark:text-white">Sent to</p>
+                        <p className="font-bold text-slate-900 dark:text-white">{invoice.clientEmail}</p>
                     </div>
                 </div>
 
-                <div className="mb-8">
-                    <p className="text-gray-500 dark:text-gray-400 mb-2">Sent to</p>
-                    <p className="font-semibold">{invoice.clientEmail}</p>
-                </div>
-
-                <div className="bg-gray-50 dark:bg-[#252945] rounded-t-lg p-6">
+                <div className="rounded-t-lg bg-[#f8f8fb] p-6 dark:bg-[#252945]">
                     <div className="overflow-x-auto">
                     <table className="w-full min-w-[480px]">
                         <thead>
-                        <tr className="text-left text-gray-500 dark:text-gray-400">
-                            <th className="font-normal pb-4">Item Name</th>
-                            <th className="text-center font-normal pb-4">QTY</th>
-                            <th className="text-right font-normal pb-4">Price</th>
-                            <th className="text-right font-normal pb-4">Total</th>
+                        <tr className="text-left text-xs text-[#888eb0] dark:text-white">
+                            <th className="pb-4 font-normal">Item Name</th>
+                            <th className="pb-4 text-center font-normal">QTY.</th>
+                            <th className="pb-4 text-right font-normal">Price</th>
+                            <th className="pb-4 text-right font-normal">Total</th>
                         </tr>
                         </thead>
                         <tbody>
                         {invoice.items.map((item: Invoice["items"][number], i: number) => (
                             <tr key={i}>
-                                <td className="py-2 font-semibold">{item.name}</td>
-                                <td className="text-center text-gray-500 dark:text-gray-400">{item.quantity}</td>
-                                <td className="text-right text-gray-500 dark:text-gray-400">${item.price}</td>
-                                <td className="text-right font-semibold">${item.total}</td>
+                                <td className="py-3 text-xs font-bold">{item.name}</td>
+                                <td className="text-center text-xs font-bold text-[#7e88c3] dark:text-white">{item.quantity}</td>
+                                <td className="text-right text-xs font-bold text-[#7e88c3] dark:text-white">${item.price}</td>
+                                <td className="text-right text-xs font-bold">${item.total}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -147,8 +153,8 @@ export default function InvoiceDetail() {
                     </div>
                 </div>
 
-                <div className="flex justify-between items-center bg-gray-900 text-white p-6 rounded-b-lg">
-                    <span className="text-sm">Amount Due</span>
+                <div className="flex items-center justify-between rounded-b-lg bg-[#373b53] p-6 text-white dark:bg-black">
+                    <span className="text-xs">{invoice.status === "paid" ? "Grand Total" : "Amount Due"}</span>
                     <span className="text-2xl font-bold">${invoice.total}</span>
                 </div>
             </div>

@@ -13,21 +13,21 @@ type InvoiceCardProps = {
 
 export const statusStyles: Record<InvoiceStatus, { bg: string; text: string; dot: string; label: string }> = {
     paid: {
-        bg: "bg-[#F5FDFA]",
+        bg: "bg-[#F5FDFA] dark:bg-[#1F2A3E]",
         text: "text-[#33D69F]",
         dot: "bg-[#33D69F]",
         label: "Paid",
     },
     pending: {
-        bg: "bg-[#FFF9F2]",
+        bg: "bg-[#FFF9F2] dark:bg-[#292636]",
         text: "text-[#FF8F00]",
         dot: "bg-[#FF8F00]",
         label: "Pending",
     },
     draft: {
-        bg: "bg-[#F5F5F6]",
-        text: "text-[#373B53]",
-        dot: "bg-[#373B53]",
+        bg: "bg-[#F5F5F6] dark:bg-[#272A43]",
+        text: "text-[#373B53] dark:text-[#DFE2FA]",
+        dot: "bg-[#373B53] dark:bg-[#DFE2FA]",
         label: "Draft",
     },
 };
@@ -41,15 +41,15 @@ export const InvoiceCard = ({ id, dueDate, client, amount, status }: InvoiceCard
             className="flex h-[90px] w-[730px] items-center gap-4 rounded-[8px] border border-transparent bg-white px-8 py-6 text-card-foreground transition-colors hover:border-[#7C5DFA] dark:bg-card"
         >
             <div className="min-w-0 flex-1 text-xs font-bold text-slate-900 dark:text-white">
-                <span className="text-gray-500">#</span>
+                <span className="text-gray-500 dark:text-white">#</span>
                 {id.slice(-6)}
             </div>
 
-            <div className="flex-1.5 text-xs text-slate-500">
+            <div className="flex-1.5 text-xs text-slate-500 dark:text-white">
                 Due {dueDate}
             </div>
 
-            <div className="min-w-0 flex-1 pl-10 truncate text-xs text-slate-500">
+            <div className="min-w-0 flex-1 pl-10 truncate text-xs text-slate-500 dark:text-white">
                 {client}
             </div>
 
